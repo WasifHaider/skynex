@@ -118,10 +118,10 @@ export function Hero() {
               <div className="flex items-center justify-between border-t border-ink/[0.07] bg-cream px-4 py-[13px]">
                 <div>
                   <div className="font-mono text-[9.5px] font-semibold tracking-[0.1em] text-muted">
-                    WEEK GROSS · PROJECTED
+                    WEEK GROSS · {site.weekGrossLoads} LOADS
                   </div>
                   <div className="mt-1.5 font-sans text-[22px] font-extrabold text-ink">
-                    $6,420
+                    {site.weekGrossRange}
                   </div>
                 </div>
                 <div className="flex h-9 items-end gap-1.5">

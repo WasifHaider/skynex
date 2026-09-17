@@ -25,14 +25,22 @@ export type RateRow = {
   trendColor: "forest" | "muted";
 };
 
+export type FeeTier = {
+  label: string;
+  sub: string;
+  range: string;
+};
+
 export type Site = {
   name: string;
   city: string;
   phone: string;
   phoneDisplay: string;
   email: string;
-  feePercent: number;
+  feeTiers: FeeTier[];
   loadsThisWeek: number;
+  weekGrossRange: string;
+  weekGrossLoads: number;
   testimonials: Testimonial[];
   brokers: Broker[];
   faqs: Faq[];
@@ -45,8 +53,21 @@ export const site: Site = {
   phone: "+15125550180",
   phoneDisplay: "(512) 555-0180",
   email: "dispatch@skynexlogistics.com",
-  feePercent: 5,
+  feeTiers: [
+    {
+      label: "Semi Trucks",
+      sub: "Dry van, reefer, flatbed, step deck, power only",
+      range: "4–5%",
+    },
+    {
+      label: "Non-Semi Trucks",
+      sub: "Box trucks & hotshots",
+      range: "6–8%",
+    },
+  ],
   loadsThisWeek: 318,
+  weekGrossRange: "$10,000–12,000",
+  weekGrossLoads: 3,
   testimonials: [
     {
       quote:
@@ -95,7 +116,7 @@ export const site: Site = {
     {
       question: "What do you charge, and when?",
       answer:
-        "A flat percentage of linehaul — 5% for most equipment — invoiced after the load pays. No setup fee, no monthly minimum, and nothing owed on a week we don't book you.",
+        "A flat percentage of linehaul — 4–5% for semi trucks, 6–8% for box trucks and hotshots — invoiced after the load pays. No setup fee, no monthly minimum, and nothing owed on a week we don't book you.",
     },
     {
       question: "Am I locked into a contract?",
@@ -116,34 +137,34 @@ export const site: Site = {
   rateRows: [
     {
       equipment: "Dry Van",
-      barPct: 52,
+      barPct: 58,
       barColor: "forest",
-      range: "$2.10–2.60",
+      range: "$2.70–3.50",
       trend: "+2.1%",
       trendColor: "forest",
     },
     {
       equipment: "Reefer",
-      barPct: 66,
+      barPct: 72,
       barColor: "forest",
-      range: "$2.45–3.00",
+      range: "$3.00–4.50",
       trend: "+3.4%",
       trendColor: "forest",
     },
     {
       equipment: "Flatbed",
       hot: true,
-      barPct: 78,
+      barPct: 85,
       barColor: "gold",
-      range: "$2.60–3.20",
+      range: "$3.30–5.50",
       trend: "+6.2%",
       trendColor: "forest",
     },
     {
       equipment: "Step Deck",
-      barPct: 88,
+      barPct: 92,
       barColor: "forest",
-      range: "$2.85–3.40",
+      range: "$4.00–6.00",
       trend: "flat",
       trendColor: "muted",
     },
@@ -157,9 +178,9 @@ export const site: Site = {
     },
     {
       equipment: "Power Only",
-      barPct: 34,
+      barPct: 58,
       barColor: "forest",
-      range: "$1.65–2.10",
+      range: "$2.70–3.50",
       trend: "flat",
       trendColor: "muted",
     },
@@ -167,7 +188,7 @@ export const site: Site = {
       equipment: "Hotshot",
       barPct: 46,
       barColor: "forest",
-      range: "$1.90–2.50",
+      range: "$2.00–2.50",
       trend: "+1.2%",
       trendColor: "forest",
     },

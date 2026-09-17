@@ -22,7 +22,7 @@ export function Pricing() {
               You pay us when the load pays you.
             </h2>
             <p className="text-pretty mt-4.5 max-w-[460px] font-sans text-base leading-[1.6] text-muted">
-              One percentage of linehaul, invoiced after the load settles. No
+              A percentage of linehaul, invoiced after the load settles. No
               setup fee, no monthly minimum, no long-term contract. If we
               don&apos;t book you freight, you don&apos;t owe us anything.
             </p>
@@ -44,26 +44,39 @@ export function Pricing() {
           </div>
 
           <div className="rounded-2xl border border-ink/12 bg-cream px-7 pb-[26px] pt-7">
-            <div className="flex flex-wrap items-baseline justify-between gap-4">
-              <div>
-                <div className="font-mono text-[10px] font-semibold tracking-[0.14em] text-muted">
-                  DISPATCH FEE
-                </div>
-                <div className="mt-2.5 flex items-baseline gap-2">
-                  <span className="font-sans text-[46px] font-extrabold leading-none tracking-[-0.03em] text-ink">
-                    {site.feePercent}%
-                  </span>
-                  <span className="font-sans text-sm font-semibold text-muted">
-                    of linehaul
-                  </span>
-                </div>
-              </div>
-              <div className="rounded-md bg-forest/[0.09] px-2.5 py-[7px] font-mono text-[9.5px] font-semibold tracking-[0.1em] text-forest">
-                BILLED AFTER PAYOUT
-              </div>
+            <div className="font-mono text-[10px] font-semibold tracking-[0.14em] text-muted">
+              DISPATCH FEE
             </div>
 
-            <div className="my-[22px] h-px bg-ink/[0.12]" />
+            <div className="mt-4 flex flex-col gap-3.5">
+              {site.feeTiers.map((tier) => (
+                <div
+                  key={tier.label}
+                  className="rounded-xl border border-ink/10 bg-paper p-4.5"
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-3">
+                    <div>
+                      <div className="font-sans text-[15px] font-bold text-ink">
+                        {tier.label}
+                      </div>
+                      <div className="mt-1 font-sans text-xs text-muted">
+                        {tier.sub}
+                      </div>
+                    </div>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="font-sans text-2xl font-extrabold tracking-[-0.02em] text-forest">
+                        {tier.range}
+                      </span>
+                      <span className="font-sans text-xs font-semibold text-muted">
+                        of linehaul
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="my-5 h-px bg-ink/[0.12]" />
 
             <div className="flex flex-col gap-[11px]">
               {checklist.map((item) => (
